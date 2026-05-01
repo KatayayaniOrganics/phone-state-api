@@ -1,0 +1,24 @@
+{
+  "name": "phone-state-api",
+  "version": "2.0.0",
+  "description": "Phone number → state mapping API (TRAI + 938K verified samples)",
+  "main": "phone_state_api_secure.js",
+  "scripts": {
+    "start": "node phone_state_api.js",
+    "start:pm2": "pm2 start phone_state_api.js --name phone-state-api",
+    "stop:pm2": "pm2 stop phone-state-api",
+    "rebuild": "node build_ground_truth.js",
+    "verify": "node verify_system.js",
+    "test": "node test_lookup.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "mongodb": "^6.3.0"
+  },
+  "devDependencies": {},
+  "keywords": ["phone", "state", "india", "trai", "mobile", "lookup", "api"],
+  "author": "Katyayani",
+  "license": "MIT"
+}

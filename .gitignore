@@ -1,0 +1,20 @@
+node_modules/
+.env
+*.log
+.DS_Store
+.vscode/
+.idea/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sensitive files
+API_KEYS.txt
+
+# Large raw data files (optional - keep enhanced version)
+ground_truth_raw.json
+final_prefix_state.json
+
+# Build artifacts
+*.tmp
+.pm2/
