@@ -25,8 +25,8 @@ const API_KEYS = new Set([
 
 // Rate limiting (simple in-memory)
 const rateLimits = new Map(); // { apiKey: { count, resetTime } }
-const RATE_LIMIT = 1000; // requests per hour
-const RATE_WINDOW = 60 * 60 * 1000; // 1 hour in ms
+const RATE_LIMIT = 10; // requests per second
+const RATE_WINDOW = 1000; // 1 second in ms
 
 let mapping = null;
 let stats = null;
@@ -133,7 +133,7 @@ console.log(`🔒 Secure Phone-State API`);
 console.log(`Mapping loaded: ${stats.total_prefixes} prefixes`);
 console.log(`Verified samples: ${stats.total_verified_samples.toLocaleString()}`);
 console.log(`API Keys configured: ${API_KEYS.size}`);
-console.log(`Rate limit: ${RATE_LIMIT} requests/hour per key\n`);
+console.log(`Rate limit: ${RATE_LIMIT} requests/second per key\n`);
 
 const server = http.createServer((req, res) => {
   const parsed = url.parse(req.url, true);

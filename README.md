@@ -32,7 +32,7 @@ gcloud run deploy phone-state-api --source .
 | **Verified Samples** | 937,277 |
 | **Overall Accuracy** | 85.09% |
 | **High Confidence Accuracy** | 94.1% |
-| **Rate Limit** | 1000 req/hour per key |
+| **Rate Limit** | 10 req/sec per key |
 | **Latency** | <100ms |
 
 ## 🔑 API Usage
@@ -99,7 +99,7 @@ In-Memory HTTP API with API Key Auth
 ## 🔒 Security
 
 - ✅ API Key authentication (3 methods: path, query, header)
-- ✅ Rate limiting (1000 req/hour per key)
+- ✅ Rate limiting (10 req/sec per key)
 - ✅ Multiple API keys support
 - ✅ Request logging
 - ✅ CORS enabled
