@@ -15,7 +15,10 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "mongodb": "^6.3.0"
+    "mongodb": "^6.3.0",
+    "fastify": "^4.26.0",
+    "@fastify/compress": "^7.0.0",
+    "@fastify/cors": "^9.0.0"
   },
   "devDependencies": {},
   "keywords": ["phone", "state", "india", "trai", "mobile", "lookup", "api"],

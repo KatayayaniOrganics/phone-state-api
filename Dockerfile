@@ -10,14 +10,15 @@ COPY package*.json ./
 RUN npm ci --production
 
 # Copy application files
-COPY phone_state_api_secure.js .
+COPY phone_state_api_fast.js .
 COPY enhanced_prefix_state.json .
 
 # Cloud Run uses PORT environment variable
 ENV PORT=8080
+ENV NODE_ENV=production
 
 # Expose port
 EXPOSE 8080
 
-# Start the application
-CMD ["node", "phone_state_api_secure.js"]
+# Start the application with optimizations
+CMD ["node", "--max-old-space-size=512", "phone_state_api_fast.js"]
