@@ -133,7 +133,7 @@ console.log(`🔒 Secure Phone-State API`);
 console.log(`Mapping loaded: ${stats.total_prefixes} prefixes`);
 console.log(`Verified samples: ${stats.total_verified_samples.toLocaleString()}`);
 console.log(`API Keys configured: ${API_KEYS.size}`);
-console.log(`Rate limit: ${RATE_LIMIT} requests/second per key\n`);
+console.log(`Rate limit: DISABLED (unlimited requests)\n`);
 
 const server = http.createServer((req, res) => {
   const parsed = url.parse(req.url, true);
@@ -162,18 +162,17 @@ const server = http.createServer((req, res) => {
     return res.end(JSON.stringify({ error: auth.error, message: auth.message }));
   }
 
-  // Rate limiting
-  const rateCheck = checkRateLimit(auth.apiKey);
-  if (!rateCheck.allowed) {
-    res.statusCode = 429;
-    res.setHeader('X-RateLimit-Reset', rateCheck.resetIn);
-    return res.end(JSON.stringify({
-      error: 'rate_limit_exceeded',
-      message: `Rate limit exceeded. Try again in ${rateCheck.resetIn} seconds.`
-    }));
-  }
-
-  res.setHeader('X-RateLimit-Remaining', rateCheck.remaining);
+  // Rate limiting disabled
+  // const rateCheck = checkRateLimit(auth.apiKey);
+  // if (!rateCheck.allowed) {
+  //   res.statusCode = 429;
+  //   res.setHeader('X-RateLimit-Reset', rateCheck.resetIn);
+  //   return res.end(JSON.stringify({
+  //     error: 'rate_limit_exceeded',
+  //     message: `Rate limit exceeded. Try again in ${rateCheck.resetIn} seconds.`
+  //   }));
+  // }
+  // res.setHeader('X-RateLimit-Remaining', rateCheck.remaining);
 
   // GET /lookup?phone=... OR GET /lookup/:phone
   if (parsed.pathname === '/lookup' && req.method === 'GET') {
